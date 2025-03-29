@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DarshanAssignment2</string>
+    <string name="add_task">Add Task</string>
+    <string name="view_tasks">View Tasks</string>
+    <string name="task_name">Task Name</string>
+    <string name="voice_input">Voice Input</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="save_task">Save Task</string>
+    <string name="id">ID</string>
+    <string name="due_time">Due Time</string>
+</resources>
