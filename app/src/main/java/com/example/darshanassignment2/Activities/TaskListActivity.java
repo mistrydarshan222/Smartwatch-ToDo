@@ -34,4 +34,13 @@ public class TaskListActivity extends AppCompatActivity {
         adapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        taskList.clear();
+        taskList.addAll(TaskManager.loadTasks(this));
+        adapter.notifyDataSetChanged();
+    }
+
 }

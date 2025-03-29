@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.darshanassignment2.Activities.EditTaskActivity;
 import com.example.darshanassignment2.Model.Task;
 import com.example.darshanassignment2.R;
+import com.example.darshanassignment2.Utils.TaskManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +45,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             intent.putExtra("TASK_ID", task.getId());
             v.getContext().startActivity(intent);
         });
+
+        // Long press to delete
+        holder.itemView.setOnLongClickListener(v -> {
+            TaskManager.deleteTaskById(v.getContext(), task.getId());
+            tasks.remove(position);
+            notifyItemRemoved(position);
+            return true;
+        });
+
     }
 
     @Override

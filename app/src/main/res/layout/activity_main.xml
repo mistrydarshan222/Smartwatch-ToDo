@@ -17,7 +17,7 @@
             android:id="@+id/btnAddTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryVariant"
+            android:background="@drawable/rounded_time"
             android:text="@string/add_task" />
 
         <Button
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/view_tasks"
-            android:background="@color/colorPrimaryVariant"
+            android:background="@drawable/rounded_time"
             android:layout_marginTop="10dp" />
     </LinearLayout>
 
