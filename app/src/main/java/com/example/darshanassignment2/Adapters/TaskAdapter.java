@@ -1,11 +1,13 @@
 package com.example.darshanassignment2.Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.darshanassignment2.Activities.EditTaskActivity;
 import com.example.darshanassignment2.Model.Task;
 import com.example.darshanassignment2.R;
 
@@ -17,7 +19,7 @@ import java.util.Locale;
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     private List<Task> tasks;
-    private SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+    private final SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
 
     public TaskAdapter(List<Task> tasks) {
         this.tasks = tasks;
@@ -35,6 +37,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         Task task = tasks.get(position);
         holder.txtTaskName.setText(task.getName());
         holder.txtDueTime.setText("Due: " + timeFormat.format(new Date(task.getDueTimeMillis())));
+
+        // Edit on item click
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), EditTaskActivity.class);
+            intent.putExtra("TASK_ID", task.getId());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override

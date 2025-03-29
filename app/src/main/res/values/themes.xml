@@ -3,12 +3,16 @@
 
     <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your theme here. Use colors defined in colors.xml -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/black</item>
     </style>
+
+    <style name="CustomTimePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:background">@drawable/dialog_border</item>
+    </style>
+
 
 </resources>

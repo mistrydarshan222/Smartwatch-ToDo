@@ -33,4 +33,29 @@ public class TaskManager {
         }
         return new ArrayList<>();
     }
+
+    public static Task getTaskById(Context context, String id) {
+        List<Task> tasks = loadTasks(context);
+        for (Task task : tasks) {
+            if (task.getId().equals(id)) return task;
+        }
+        return null;
+    }
+
+    public static void updateTask(Context context, Task updatedTask) {
+        List<Task> tasks = loadTasks(context);
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getId().equals(updatedTask.getId())) {
+                tasks.set(i, updatedTask);
+                break;
+            }
+        }
+        saveTasks(context, tasks);
+    }
+
+    public static void deleteTaskById(Context context, String taskId) {
+        List<Task> tasks = loadTasks(context);
+        tasks.removeIf(task -> task.getId().equals(taskId));
+        saveTasks(context, tasks);
+    }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.EditTaskActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="12dp">
+
+        <EditText
+            android:id="@+id/editTaskName"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:hint="Enter Task"
+            android:background="@android:color/transparent"
+            android:inputType="text"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnPickTime"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:text="Pick Time"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/rounded_time"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnSaveTask"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:text="Save Task"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/rounded_save" />
+    </LinearLayout>
+
+</androidx.wear.widget.BoxInsetLayout>

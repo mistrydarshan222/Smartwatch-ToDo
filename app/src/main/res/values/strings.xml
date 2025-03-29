@@ -8,4 +8,8 @@
     <string name="save_task">Save Task</string>
     <string name="id">ID</string>
     <string name="due_time">Due Time</string>
+    <string name="time">Due: 08:00 AM</string>
+    <string name="pick_new_time">Pick New Time</string>
+    <string name="edit_task_name">Edit Task Name</string>
+    <string name="save_changes">Save Changes</string>
 </resources>
