@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8BC34A</color> <!-- Green -->
-    <color name="colorPrimaryVariant">#00BCD4</color> <!-- Cyan -->
+    <color name="colorPrimaryLight">#3F51B5</color>
+    <color name="colorPrimaryBlue">#1976D2</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="colorPrimaryDark">#303F9F</color> <!-- Deep Blue -->
-    <color name="red">#FF4081</color> <!-- Pink -->
-    <color name="colorSurface">#F2F2F2</color> <!-- Light Gray -->
-    <color name="colorOnSurface">#000000</color> <!-- Black -->
+    <color name="red">#F44336</color>
 </resources>
 

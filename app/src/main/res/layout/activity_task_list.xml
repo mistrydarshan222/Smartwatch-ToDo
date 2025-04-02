@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="@dimen/_10dp"
     tools:context=".Activities.TaskListActivity">
 
     <androidx.wear.widget.WearableRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
+        android:padding="@dimen/_10dp"
         android:layout_gravity="center" />
 
 </androidx.wear.widget.BoxInsetLayout>

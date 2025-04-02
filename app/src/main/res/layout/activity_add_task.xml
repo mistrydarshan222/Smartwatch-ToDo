@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
-    android:background="@color/colorSurface"
+    android:padding="@dimen/_5dp"
+    android:background="@color/white"
     tools:context=".Activities.AddTaskActivity">
 
     <LinearLayout
@@ -13,13 +13,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="10dp">
+        android:padding="@dimen/_10dp">
 
         <EditText
             android:id="@+id/editTaskName"
-            android:layout_width="144dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30dp"
+            android:minHeight="@dimen/_48dp"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:paddingHorizontal="@dimen/_8dp"
             android:autofillHints="username"
             android:background="@android:color/transparent"
             android:gravity="center"
@@ -27,36 +29,52 @@
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_14sp" />
 
-        <Button
-            android:id="@+id/btnVoiceInput"
-            android:layout_width="152dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/rounded_voice"
-            android:text="@string/voice_input"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_8dp">
 
-        <Button
-            android:id="@+id/btnPickTime"
-            android:layout_width="157dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/rounded_time"
-            android:text="@string/pick_time"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            <Button
+                android:id="@+id/btnVoiceInput"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_48dp"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_voice"
+                android:minHeight="@dimen/_48dp"
+                android:paddingHorizontal="@dimen/_6dp"
+                android:text="@string/voice_input"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sp" />
+
+            <Button
+                android:id="@+id/btnPickTime"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_48dp"
+                android:minHeight="@dimen/_48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_4dp"
+                android:paddingHorizontal="@dimen/_6dp"
+                android:background="@drawable/rounded_time"
+                android:text="@string/pick_time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSaveTask"
-            android:layout_width="153dp"
-            android:layout_height="36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_48dp"
+            android:minHeight="@dimen/_48dp"
+            android:paddingHorizontal="@dimen/_20dp"
             android:background="@drawable/rounded_save"
             android:text="@string/save_task"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_12sp" />
     </LinearLayout>
 
 </androidx.wear.widget.BoxInsetLayout>
