@@ -1,21 +1,18 @@
 package com.example.darshanassignment2.Adapters;
 
-import android.view.View;
-import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.darshanassignment2.R;
+import com.example.darshanassignment2.databinding.ItemTaskBinding;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder {
-    TextView txtTaskName;
-    TextView txtDueTime;
+    ItemTaskBinding binding;
 
-    // Constructor initializes the views from the layout item
-    public TaskViewHolder(View itemView) {
-        super(itemView);
-        // Bind TextViews to their IDs in item_task.xml
-        txtTaskName = itemView.findViewById(R.id.txtTaskName);
-        txtDueTime = itemView.findViewById(R.id.txtDueTime);
+    public TaskViewHolder(ItemTaskBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
+    }
+
+    public ItemTaskBinding getBinding() {
+        return binding;
     }
 }

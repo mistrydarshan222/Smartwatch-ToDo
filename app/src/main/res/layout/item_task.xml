@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemTaskRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,22 +10,44 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/txtTaskId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_id"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sp"
+        android:gravity="center"
+        android:textStyle="italic" />
+
+    <TextView
         android:id="@+id/txtTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/task_name"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="@dimen/_16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_4dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/txtDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/due_date"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sp"
+        android:layout_marginTop="@dimen/_4dp"
         android:gravity="center" />
 
     <TextView
         android:id="@+id/txtDueTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/time"
+        android:text="@string/due_time"
         android:textColor="@color/white"
         android:textSize="@dimen/_14sp"
-        android:layout_marginTop="@dimen/_4dp"
+        android:layout_marginTop="@dimen/_2dp"
         android:gravity="center" />
+
 </LinearLayout>

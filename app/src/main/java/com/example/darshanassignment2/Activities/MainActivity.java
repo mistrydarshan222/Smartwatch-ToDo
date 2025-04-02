@@ -1,56 +1,46 @@
 package com.example.darshanassignment2.Activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.Manifest;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.darshanassignment2.R;
+
 import com.example.darshanassignment2.Utils.NotificationScheduler;
+import com.example.darshanassignment2.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnAddTask, btnViewTasks;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MainActivity", "onCreate started");
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btnAddTask = findViewById(R.id.btnAddTask);
-        btnViewTasks = findViewById(R.id.btnViewTasks);
-
-        btnAddTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddTaskActivity.class));
-            }
-        });
-
-        btnViewTasks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TaskListActivity.class));
-            }
-        });
+        binding.btnAddTask.setOnClickListener(this);
+        binding.btnViewTasks.setOnClickListener(this);
 
         NotificationScheduler.scheduleRepeatingCheck(this);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
         }
 
         NotificationScheduler.checkAndNotify(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == binding.btnAddTask.getId()) {
+            startActivity(new Intent(this, AddTaskActivity.class));
+        } else if (v.getId() == binding.btnViewTasks.getId()) {
+            startActivity(new Intent(this, TaskListActivity.class));
+        }
     }
 }

@@ -13,4 +13,6 @@
     <string name="edit_task_name">Edit Task Name</string>
     <string name="save_changes">Save Changes</string>
     <string name="enter_task">Enter Task</string>
+    <string name="task_id">Task ID: </string>
+    <string name="due_date">Due Date</string>
 </resources>

@@ -9,6 +9,7 @@ import com.example.darshanassignment2.Adapters.TaskAdapter;
 import com.example.darshanassignment2.Model.Task;
 import com.example.darshanassignment2.R;
 import com.example.darshanassignment2.Utils.TaskManager;
+import com.example.darshanassignment2.databinding.ActivityDueSoonBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,17 +20,17 @@ public class DueSoonActivity extends AppCompatActivity {
     private WearableRecyclerView recyclerView;
     private TaskAdapter adapter;
     private List<Task> dueSoonTasks;
+    private ActivityDueSoonBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_due_soon);
+        binding = ActivityDueSoonBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recyclerView = findViewById(R.id.recyclerViewDueSoon);
         dueSoonTasks = getTasksDueWithinHour();
-
         adapter = new TaskAdapter(dueSoonTasks);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerViewDueSoon.setAdapter(adapter);
     }
 
     private List<Task> getTasksDueWithinHour() {
