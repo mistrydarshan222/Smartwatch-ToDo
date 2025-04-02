@@ -15,4 +15,6 @@
     <string name="enter_task">Enter Task</string>
     <string name="task_id">Task ID: </string>
     <string name="due_date">Due Date</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

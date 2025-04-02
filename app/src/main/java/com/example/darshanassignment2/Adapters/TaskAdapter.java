@@ -40,7 +40,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         Task task = tasks.get(position);
         ItemTaskBinding binding = holder.getBinding();
 
-        // Populate views
         binding.txtTaskId.setText("Task ID: " + task.getId());
         binding.txtTaskName.setText(task.getName());
 
@@ -48,10 +47,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
         binding.txtDueDate.setText("Due Date: " + dateFormat.format(new Date(dueTime)));
         binding.txtDueTime.setText("Due Time: " + timeFormat.format(new Date(dueTime)));
 
-        View rootView = binding.getRoot();
-
-        // Handle item click
-        rootView.setOnClickListener(new View.OnClickListener() {
+        // Handle Edit button
+        binding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
@@ -61,15 +58,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
             }
         });
 
-        // Handle item long-click (delete)
-        rootView.setOnLongClickListener(new View.OnLongClickListener() {
+        // Handle Delete button
+        binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 Context context = v.getContext();
                 TaskManager.deleteTaskById(context, task.getId());
                 tasks.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());
-                return true;
             }
         });
     }
