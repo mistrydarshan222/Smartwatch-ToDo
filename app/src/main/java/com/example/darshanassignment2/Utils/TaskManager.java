@@ -14,7 +14,7 @@ import java.util.List;
 public class TaskManager {
 
     // SharedPreferences file name and key for storing tasks
-    private static final String PREFS_NAME = "task_prefs";
+    private static final String PREFS_NAME = "DarshanAssignment2Prefs";
     private static final String TASKS_KEY = "tasks";
 
     // Saves the list of tasks to SharedPreferences as a JSON string.
@@ -65,7 +65,6 @@ public class TaskManager {
     }
 
     // Deletes a task by its ID and saves the updated list.
-
     public static void deleteTaskById(Context context, String taskId) {
         List<Task> tasks = loadTasks(context);
 

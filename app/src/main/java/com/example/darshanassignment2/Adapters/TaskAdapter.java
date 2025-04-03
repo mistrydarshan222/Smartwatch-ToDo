@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.darshanassignment2.Activities.EditTaskActivity;
 import com.example.darshanassignment2.Model.Task;
+import com.example.darshanassignment2.R;
 import com.example.darshanassignment2.Utils.TaskManager;
 import com.example.darshanassignment2.databinding.ItemTaskBinding;
 
@@ -21,9 +22,6 @@ import java.util.Locale;
 public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     private List<Task> tasks;
-
-    private final SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.getDefault());
 
     public TaskAdapter(List<Task> tasks) {
         this.tasks = tasks;
@@ -39,30 +37,33 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskViewHolder> {
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         Task task = tasks.get(position);
         ItemTaskBinding binding = holder.getBinding();
+        Context context = binding.getRoot().getContext();
 
-        binding.txtTaskId.setText("Task ID: " + task.getId());
+        // Load localized date/time format patterns from strings.xml
+        SimpleDateFormat timeFormat = new SimpleDateFormat(context.getString(R.string.time_format), Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat(context.getString(R.string.date_format), Locale.getDefault());
+
+        // Set task name and due time details
         binding.txtTaskName.setText(task.getName());
 
         long dueTime = task.getDueTimeMillis();
-        binding.txtDueDate.setText("Due Date: " + dateFormat.format(new Date(dueTime)));
-        binding.txtDueTime.setText("Due Time: " + timeFormat.format(new Date(dueTime)));
+        binding.txtDueDate.setText(context.getString(R.string.due_date_label) + dateFormat.format(new Date(dueTime)));
+        binding.txtDueTime.setText(context.getString(R.string.due_time_label) + timeFormat.format(new Date(dueTime)));
 
-        // Handle Edit button
+        // Handle Edit button click
         binding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = v.getContext();
                 Intent intent = new Intent(context, EditTaskActivity.class);
-                intent.putExtra("TASK_ID", task.getId());
+                intent.putExtra(context.getString(R.string.extra_task_id), task.getId()); // Use string resource key
                 context.startActivity(intent);
             }
         });
 
-        // Handle Delete button
+        // Handle Delete button click
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = v.getContext();
                 TaskManager.deleteTaskById(context, task.getId());
                 tasks.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());

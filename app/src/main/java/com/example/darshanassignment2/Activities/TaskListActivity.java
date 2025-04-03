@@ -10,7 +10,6 @@ import com.example.darshanassignment2.Adapters.TaskAdapter;
 import com.example.darshanassignment2.Model.Task;
 import com.example.darshanassignment2.R;
 import com.example.darshanassignment2.Utils.TaskManager;
-import com.example.darshanassignment2.databinding.ActivityTaskListBinding;
 
 import java.util.List;
 
@@ -19,30 +18,32 @@ public class TaskListActivity extends AppCompatActivity {
     private WearableRecyclerView recyclerView;
     private TaskAdapter adapter;
     private List<Task> taskList;
-    private ActivityTaskListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTaskListBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_task_list); // Inflate layout
 
+        // Initialize RecyclerView and load stored tasks
+        recyclerView = findViewById(R.id.recyclerView);
         taskList = TaskManager.loadTasks(this);
 
-        binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setEdgeItemsCenteringEnabled(true);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Setup RecyclerView for optimal performance on Wear OS
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setEdgeItemsCenteringEnabled(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Bind adapter to task list
         adapter = new TaskAdapter(taskList);
-        binding.recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
+    //Reloads the task list every time the activity is resumed.
     @Override
     protected void onResume() {
         super.onResume();
-        taskList.clear();
-        taskList.addAll(TaskManager.loadTasks(this));
-        adapter.notifyDataSetChanged();
+        taskList.clear(); // Clear current list
+        taskList.addAll(TaskManager.loadTasks(this)); // Reload tasks
+        adapter.notifyDataSetChanged(); // Refresh UI
     }
-
 }

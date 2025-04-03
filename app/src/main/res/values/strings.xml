@@ -17,4 +17,23 @@
     <string name="due_date">Due Date</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="error_enter_task_name">Enter Task Name</string>
+    <string name="due_date_label">Due Date: </string>
+    <string name="due_time_label">Due Time: </string>
+    <string name="extra_task_id">TASK_ID</string>
+    <string name="time_format">hh:mm a</string>
+    <string name="date_format">MMM d, yyyy</string>
+    <string name="error_name_required">Name required</string>
+    <string name="action_snooze_task">SNOOZE_TASK</string>
+    <string name="action_delete_task">DELETE_TASK</string>
+    <string name="log_tag_notify">NOTIFY</string>
+    <string name="log_task_snoozed">Task snoozed!</string>
+    <string name="log_task_deleted">Task deleted!</string>
+    <string name="notification_title_prefix">Task Due: </string>
+    <string name="notification_content_text">This task is due soon.</string>
+    <string name="notification_action_snooze">Snooze</string>
+    <string name="notification_action_delete">Delete</string>
+    <string name="notification_channel_name">Task Alerts</string>
+    <string name="notification_channel_description">Channel for upcoming task notifications</string>
+
 </resources>

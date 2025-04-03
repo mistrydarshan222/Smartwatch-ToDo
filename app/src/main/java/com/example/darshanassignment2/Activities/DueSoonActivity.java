@@ -28,10 +28,13 @@ public class DueSoonActivity extends AppCompatActivity {
         binding = ActivityDueSoonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Load tasks due within 1 hour and set up RecyclerView
         dueSoonTasks = getTasksDueWithinHour();
         adapter = new TaskAdapter(dueSoonTasks);
         binding.recyclerViewDueSoon.setAdapter(adapter);
     }
+
+    // Filters and returns a list of tasks due within the next one hour.
 
     private List<Task> getTasksDueWithinHour() {
         List<Task> allTasks = TaskManager.loadTasks(this);
@@ -40,6 +43,7 @@ public class DueSoonActivity extends AppCompatActivity {
         long now = System.currentTimeMillis();
         long oneHourLater = now + (60 * 60 * 1000); // 1 hour in milliseconds
 
+        // Filter tasks whose due time is within the next hour
         for (Task task : allTasks) {
             if (task.getDueTimeMillis() >= now && task.getDueTimeMillis() <= oneHourLater) {
                 dueTasks.add(task);
